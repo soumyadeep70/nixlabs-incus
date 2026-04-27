@@ -1,0 +1,9 @@
+[core.system]
+arch = "x86_64"
+platform = "container"
+machineId = "d9e4a2b7c1f850a396d24e1b87c5f3a6"
+hostName = "aeon"
+locale = "en_US.UTF-8"
+timeZone = "Asia/Kolkata"
+stateVersion = "26.05"
+homeStateVersion = "26.05"
