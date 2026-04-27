@@ -20,15 +20,6 @@ in
       wildcardAccessUrl = "*.${targetUrl}";
     };
 
-    sapphire.storage.impermanence.system.dirs = [
-      {
-        directory = "/var/lib/coder";
-        user = "coder";
-        group = "coder";
-        mode = "u=rwx,g=rwx,o=";
-      }
-    ];
-
     users.users."coder".extraGroups = [ "docker" ];
     users.groups."coder".members = builtins.attrNames specs.core.users;
 

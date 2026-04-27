@@ -24,8 +24,8 @@
     inputs@{ flake-parts, ... }:
     flake-parts.lib.mkFlake { inherit inputs; } {
       imports = [
-        # ./hosts
-        # ./modules
+        ./hosts
+        ./modules
         ./formatter.nix
         ./git-hooks.nix
       ];

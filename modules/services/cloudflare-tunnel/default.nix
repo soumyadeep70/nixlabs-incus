@@ -43,9 +43,5 @@ in
         };
       };
     };
-
-    sapphire.storage.impermanence.system.dirs = [
-      "/var/lib/cloudflared"
-    ];
   };
 }

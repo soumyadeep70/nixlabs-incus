@@ -11,13 +11,5 @@
       80
       443
     ];
-    sapphire.storage.impermanence.system.dirs = [
-      {
-        directory = "/var/lib/caddy";
-        user = "caddy";
-        group = "caddy";
-        mode = "u=rwx,g=rx,o=";
-      }
-    ];
   };
 }
