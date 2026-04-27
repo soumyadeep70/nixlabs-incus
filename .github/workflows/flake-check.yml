@@ -1,0 +1,31 @@
+# --- Run `nix flake check`
+name: nix flake check
+on:
+  workflow_dispatch: # allows manual triggering from the Actions UI
+  push:
+    branches:
+      - main
+  pull_request:
+    types: [opened, reopened, synchronize]
+  repository_dispatch:
+    types: [create-pull-request]
+jobs:
+  flake-check:
+    runs-on: "ubuntu-latest"
+    steps:
+      - name: "Checking out repository..."
+        uses: actions/checkout@v4
+      - name: "Installing and configuring the nix package manager..."
+        uses: DeterminateSystems/nix-installer-action@main
+        with:
+          extra-conf: |
+            accept-flake-config = true
+      - name: "Install nix-fast-build..."
+        run: nix profile install nixpkgs#nix-fast-build
+      - name: "Run CI Builds (Checks, Packages, DevShells)..."
+        run: |
+          nix-fast-build --skip-cached --no-nom --flake ".#checks"
+          nix-fast-build --skip-cached --no-nom --flake ".#packages"
+          nix-fast-build --skip-cached --no-nom --flake ".#devShells"
+      - name: "Flake Security & Stale Input Check..."
+        uses: DeterminateSystems/flake-checker-action@main
