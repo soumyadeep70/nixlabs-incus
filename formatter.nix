@@ -16,28 +16,29 @@
         flakeFormatter = true;
         projectRootFile = "flake.nix";
 
-        settings = {
-          global.excludes = [
-            "*.age"
-          ];
-          shellcheck.includes = [
-            "*.sh"
-            ".envrc"
-          ];
-          prettier.editorconfig = true;
-        };
+        settings.excludes = [
+          "*.age"
+        ];
 
         programs = {
           deadnix.enable = true;
           statix.enable = true;
           nixfmt.enable = true;
 
-          prettier.enable = true;
-          yamlfmt.enable = true;
-          jsonfmt.enable = true;
-          mdformat.enable = true;
+          mdformat = {
+            enable = true;
+            excludes = [
+              ".github/**/*.md"
+            ];
+          };
           shfmt.enable = true;
-          shellcheck.enable = true;
+          shellcheck = {
+            enable = true;
+            includes = [
+              "*.sh"
+              ".envrc"
+            ];
+          };
           actionlint.enable = true;
         };
       };

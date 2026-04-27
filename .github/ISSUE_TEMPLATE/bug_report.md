@@ -1,6 +1,10 @@
 ---
-
-## name: 🪲 Bug Report about: Create a bug report to help us resolve the bug title: "🪲\[Bug\]: " labels: "bug" assignees: ""
+name: 🪲 Bug Report
+about: Create a bug report to help us resolve the bug
+title: "🪲[Bug]: "
+labels: "bug"
+assignees: ""
+---
 
 ## Describe the bug
 
