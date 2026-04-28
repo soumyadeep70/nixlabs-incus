@@ -21,7 +21,7 @@ in
     };
 
     users.users."coder".extraGroups = [ "docker" ];
-    users.groups."coder".members = builtins.attrNames specs.core.users;
+    users.groups."coder".members = lib.singleton specs.core.user.name;
 
     services.caddy.virtualHosts."http://${targetUrl}".extraConfig = ''
       reverse_proxy ${config.services.coder.listenAddress} {
